@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlaceProxy</title>
+    <style>
+        html {
+            background-color: #333333;
+            color: #aaaaaa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        svg {
+            width: 64px;
+            margin-right: 1rem;
+        }
+        .ios {
+            color: #666666;
+        }
+        .android {
+            color: #3DDC84;
+        }
+        h2 {
+            margin-top: 0px;
+        }
+        .btn {
+            display: inline-block;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: .875rem;
+            line-height: 1.5;
+            border-radius: 0.2rem;
+        }
+        .text-danger {
+            color: #dc3545!important;
+        }
+        .alert {
+            position: relative;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+    </style>
+</head>
+<body>
+    <h1>Install PlaceProxy's Certificate Authority</h3>
+    <div class="container">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+        <div>
+            <h2>iOS</h5>
+            <a class="btn" href="http://mitm.it/cert/pem">Install Certificate</a>
+        </div>
+    </div>
+    <h5>iOS 13+</h5>
+    <ol>
+        <li>Use Safari to download the certificate. Other browsers may not open the proper installation prompt.</li>
+        <li>Install the new Profile (<samp>Settings -&gt; General -&gt; VPN &amp; Device Management</samp>).</li>
+        <li><span class="text-danger"><strong>Important:</strong> Go to <samp>Settings -&gt; General -&gt; About -&gt; Certificate Trust Settings</samp>.
+            Toggle <samp>mitmproxy</samp> to <samp>ON</samp>.</span></li>
+    </ol>
+    <div class="container">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="android" class="android" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M420.55,301.93a24,24,0,1,1,24-24,24,24,0,0,1-24,24m-265.1,0a24,24,0,1,1,24-24,24,24,0,0,1-24,24m273.7-144.48,47.94-83a10,10,0,1,0-17.27-10h0l-48.54,84.07a301.25,301.25,0,0,0-246.56,0L116.18,64.45a10,10,0,1,0-17.27,10h0l47.94,83C64.53,202.22,8.24,285.55,0,384H576c-8.24-98.45-64.54-181.78-146.85-226.55"></path></svg>
+        <div>
+            <h2>Android</h5>
+            <a class="btn" href="http://mitm.it/cert/cer">Install Certificate</a>
+        </div>
+    </div>
+    <h5>Android 10+</h5>
+    <ol>
+        <li>Open the downloaded CER file.</li>
+        <li>Enter <samp>placeproxy</samp> (or anything else) as the certificate name.</li>
+        <li>For credential use, select <samp>VPN and apps</samp>.</li>
+        <li>Click OK.</li>
+    </ol>
+
+    <p>Some Android distributions require you to install the certificate via <samp>Settings -&gt; Security -&gt; Advanced -&gt;
+        Encryption and credentials -&gt; Install a certificate -&gt; CA certificate</samp> (or similar) instead.</p>
+
+    <div class="alert alert-warning" role="alert">
+        <p><strong>Warning: </strong>Apps that target Android API Level 24 (introduced in 2016) and above only accept
+            certificates from the system trust store.
+            User-added CAs are not accepted unless the application manually opts in. Except for browsers, you need to
+            patch most apps manually
+            (<a href="https://developer.android.com/training/articles/security-config">Android network security config</a>).
+        </p>
+    </div>
+</body>
+</html>

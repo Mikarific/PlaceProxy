@@ -8,8 +8,8 @@
 // @author      Mikarific
 // @icon        https://garlic-bread.reddit.com/static/assets/img/place-logo.svg
 // @run-at      document-start
-// @updateURL   https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceProxy.user.js
-// @downloadURL	https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceProxy.user.js
+// @updateURL   https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceEnable.user.js
+// @downloadURL	https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceEnable.user.js
 // ==/UserScript==
 
 let patched = false;

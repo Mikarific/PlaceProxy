@@ -1,16 +1,20 @@
 // ==UserScript==
 // @name        PlaceEnable
 // @description Enables r/place on the reddit desktop client early.
-// @version     1.0
-// @include     https://www.reddit.com/*
-// @include     https://new.reddit.com/*
-// @include     https://reddit.com/*
+// @version     1.1
+// @match       https://www.reddit.com/*
+// @match       https://new.reddit.com/*
+// @match       https://reddit.com/*
 // @author      Mikarific
 // @icon        https://garlic-bread.reddit.com/static/assets/img/place-logo.svg
 // @run-at      document-start
 // @updateURL   https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceEnable.user.js
 // @downloadURL	https://raw.githubusercontent.com/Mikarific/PlaceProxy/main/PlaceEnable.user.js
 // ==/UserScript==
+
+if (GM_info.scriptHandler !== 'Violentmonkey') {
+    alert(`PlaceEnable here! It appears you are using ${GM_info.scriptHandler}! This script is not guaranteed to work. I recommend using Violentmonkey.`);
+}
 
 let patched = false;
 let webpackObj;

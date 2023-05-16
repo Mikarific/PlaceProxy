@@ -30,13 +30,36 @@ server.addRule()
 	.host((host) => host.endsWith('mitm.it'))
 	.then(ca);
 
-// Enable r/place
 const gql = new PPPassThroughHttpHandler();
 gql.injectBuffer((req, buffer) => {
 	const data = JSON.parse(buffer);
+	// Enable r/place
 	if (data.data && data.data.experimentVariants) {
-		data.data.experimentVariants.push({ 'id':'9999', 'name':'place', 'experimentName':'ios_baked_potato', 'version':'1' });
-		data.data.experimentVariants.push({ 'id':'9999', 'name':'place', 'experimentName':'android_baked_potato', 'version':'1' });
+		data.data.experimentVariants.unshift({ 'id':'9999', 'name':'place', 'experimentName':'ios_baked_potato', 'version':'1' });
+		data.data.experimentVariants.unshift({ 'id':'9999', 'name':'place', 'experimentName':'android_baked_potato', 'version':'1' });
+	}
+
+	// Add r/PlacePride to the "Explore communities" tab.
+	if (data.data && data.data.navBarEventCommunityPicker) {
+		data.data.navBarEventCommunityPicker.communities.unshift({
+			description: null,
+			icon: null,
+			name: null,
+			subreddit: {
+				detectedLanguage: 'en',
+				id: 't2_dakg11x',
+				isSubscribed: false,
+				path: '/r/PlacePride/',
+				prefixedName: 'r/PlacePride',
+				publicDescriptionText: 'Welcome to r/PlacePride! Our discord server can be found at https://discord.gg/MUMhGkK4un. We\'re an r/place faction dedicated to making pride related artwork on the canvas!',
+				styles: {
+					icon: 'https://styles.redditmedia.com/t5_63awgf/styles/communityIcon_auvdy43krvq81.png',
+					legacyIcon: null,
+					legacyPrimaryColor: null,
+					primaryColor: '#F7A8B8',
+				},
+			},
+		});
 	}
 	return { data: JSON.stringify(data) };
 });

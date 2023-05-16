@@ -98,6 +98,6 @@ server.addRule()
 	.host((host) => !host.endsWith('redd.it') && !host.endsWith('redditstatic.com') && !host.endsWith('reddit.com') && !host.endsWith('redditmedia.com') && !host.endsWith('snooguts.net') && !host.endsWith('mitm.it'))
 	.then(notFound);
 
-server.listen(8080).then(() => {
-	console.log('Proxy is listening on port 8080!');
+server.listen(61423).then(() => {
+	console.log('Proxy is listening on port 61423!');
 });

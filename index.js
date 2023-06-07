@@ -4,6 +4,7 @@ const { createAppHttpHandler, PPServerProxy, PPPassThroughHttpHandler } = requir
 
 const caPage = fs.readFileSync('ca.html');
 const notFoundPage = fs.readFileSync('404.html');
+const canvas = fs.readFileSync('canvas.html');
 
 const server = new PPServerProxy({
 	https: {
@@ -66,6 +67,15 @@ gql.injectBuffer((req, buffer) => {
 server.addRule()
 	.host((host) => host === 'gql.reddit.com')
 	.then(gql);
+
+// Replace Canvas
+const garlicBread = createAppHttpHandler();
+garlicBread.get('/embed', (req, res) => {
+	res.status(200).send(canvas.toString());
+});
+server.addRule()
+	.host((host) => host.endsWith('garlic-bread.reddit.com'))
+	.then(garlicBread);
 
 // Enable cooldown and pinned canvas location
 const realtimeGQL2 = new PPPassThroughHttpHandler();
